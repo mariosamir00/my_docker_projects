@@ -1,0 +1,17 @@
+#The Base Image
+FROM node:current-alpine3.22 
+
+#Changing the container working dir
+WORKDIR /app
+
+#Copying and installing dependencies
+COPY package.json .
+RUN npm install
+COPY server.js .
+
+#Expose js port
+EXPOSE 3000
+
+#Run the server
+CMD ["node", "server.js"]
+
